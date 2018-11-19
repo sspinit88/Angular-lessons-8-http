@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 
 @Injectable()
 
-export class CarsService {
+export class CarsHttpService {
 
     // private http - переменная, с помощью которой будем работать с сервисом и сервером
 
-    constructor(private http: Http) {
+    constructor(private  http: HttpClient) {
 
     }
 }
