@@ -14,6 +14,7 @@ export class CarsHttpService {
     // метод, позволяющий получать параметры с сервера
     getCars() {
         // пишим адрес запроса
-        this.http.get('localhost:3000/cars');
+        // возвращаем результат работы запроса
+        return this.http.get('http://localhost:3000/cars');
     }
 }
