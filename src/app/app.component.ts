@@ -6,6 +6,11 @@ import {CarsHttpService} from './cars.service';
     templateUrl: './app.component.html'
 })
 
+// interface ICars {
+//     name: string;
+//     color: string;
+//     id: number;
+// }
 
 export class AppComponent {
 
@@ -16,7 +21,7 @@ export class AppComponent {
 
     loadCars() {
 
-        this.carsHttpServ.getCars().subscribe((cars) => {
+        this.carsHttpServ.getCars().subscribe((cars: any[]) => {
             this.cars = cars;
         });
     }
