@@ -1,20 +1,34 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Injectable, Output, EventEmitter} from '@angular/core';
+// import {HttpClient} from '@angular/common/http';
 
 
 @Injectable()
 
-export class CarsHttpService {
 
-    // private http - переменная, с помощью которой будем работать с сервисом и сервером
+export class CarsService {
 
-    constructor(private  http: HttpClient) {
+    @Output() change: EventEmitter<boolean> = new EventEmitter();
+
+    cars: any[];
+
+    cars = [
+
+        {
+            'name': 'Ford',
+            'color': 'white',
+            'id': 1
+        }
+
+    ];
+
+    constructor() {
     }
 
-    // метод, позволяющий получать параметры с сервера
     getCars() {
-        // пишим адрес запроса
-        // возвращаем результат работы запроса
-        return this.http.get('http://localhost:3000/cars');
+        return this.cars;
+    }
+
+    setCar(value) {
+        this.cars = value;
     }
 }

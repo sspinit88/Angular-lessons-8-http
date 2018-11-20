@@ -1,28 +1,39 @@
-import {Component} from '@angular/core';
-import {CarsHttpService} from './cars.service';
+import {Component, OnInit} from '@angular/core';
+import {CarsService} from './cars.service';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    providers: [CarsService]
 })
 
-// interface ICars {
-//     name: string;
-//     color: string;
-//     id: number;
-// }
+interface ICars {
+    name: string;
+    color: string;
+    id: number;
+}
 
-export class AppComponent {
 
-    cars = [];
+export class AppComponent implements OnInit {
 
-    constructor(private carsHttpServ: CarsHttpService) {
+    cars: ICars[] = [];
+
+    constructor(private CarService: CarsService) {
+    }
+
+    ngOnInit(): void {
+        this.loadCars();
+        this.CarService.change.subscribe(cars => {
+            if (cars) {
+                console.log(cars);
+                this.cars = cars;
+            }
+        });
     }
 
     loadCars() {
-
-        this.carsHttpServ.getCars().subscribe((cars: any[]) => {
-            this.cars = cars;
-        });
+        let a: any;
+        a = 5;
+        this.CarService.change.emit(a);
     }
 }

@@ -3,19 +3,19 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {CarsHttpService} from './cars.service';
+import {CarsService} from './cars.service';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule
     ],
-    providers: [CarsHttpService],
+    providers: [CarsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
